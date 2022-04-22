@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import android.opengl.Matrix;
+import android.util.Log;
+
 import de.javagl.obj.Obj;
 import de.javagl.obj.ObjData;
 import de.javagl.obj.ObjReader;
@@ -284,6 +286,19 @@ public class ObjectRenderer {
     }
 
     /**
+     * DEBUG PRINT A MATRICE
+     *
+     * @param debugMsg
+     * @param matrix
+     */
+    public void DEBUG_MATRIX(String debugMsg, float[] matrix) {
+        Log.d("MATRIX", debugMsg);
+        for (int k = 0; k != 4; k++) {
+            Log.d("MATRIX", "" + matrix[0 + 4 * k] + ", " + matrix[1 + 4 * k] + ", " + matrix[2 + 4 * k] + ", " + matrix[3 + 4 * k]);
+        }
+    }
+
+    /**
      * Updates the object model matrix and applies scaling.
      *
      * @param modelMatrix A 4x4 model-to-world transformation matrix, stored in column-major order.
@@ -297,6 +312,90 @@ public class ObjectRenderer {
         scaleMatrix[5] = scaleFactor;
         scaleMatrix[10] = scaleFactor;
         Matrix.multiplyMM(this.modelMatrix, 0, modelMatrix, 0, scaleMatrix, 0);
+    }
+
+    /**
+     * SCALE MATRIX
+     *
+     * @param modelMatrix
+     * @param scaleFactor
+     */
+    public void scaleModelMatrix(float[] modelMatrix, float[] scaleFactor) {
+        Matrix.scaleM(this.modelMatrix, 0, modelMatrix, 0, scaleFactor[0], scaleFactor[1], scaleFactor[2]);
+    }
+
+    /**
+     * TRANSLATE MATRIX
+     *
+     * @param modelMatrix
+     * @param translateFactor
+     */
+    public void translateModelMatrix(float[] modelMatrix, float[] translateFactor) {
+        Matrix.translateM(this.modelMatrix, 0, modelMatrix, 0, translateFactor[0], translateFactor[1], translateFactor[2]);
+    }
+
+    /**
+     * ROTATE MATRIX
+     *
+     * @param modelMatrix
+     * @param angle
+     * @param rotateFactor
+     */
+    public void rotateModelMatrix(float[] modelMatrix, float angle, float[] rotateFactor) {
+        Matrix.rotateM(this.modelMatrix, 0, modelMatrix, 0, angle, rotateFactor[0], rotateFactor[1], rotateFactor[2]);
+    }
+
+    /**
+     * SCALE + TRANSLATE MATRIX
+     *
+     * @param modelMatrix
+     * @param scaleFactor
+     * @param translateFactor
+     */
+    public void scaleTranslateModelMatrix(float[] modelMatrix, float[] scaleFactor, float[] translateFactor) {
+        Matrix.scaleM(modelMatrix, 0, modelMatrix, 0, scaleFactor[0], scaleFactor[1], scaleFactor[2]);
+        Matrix.translateM(this.modelMatrix, 0, modelMatrix, 0, translateFactor[0], translateFactor[1], translateFactor[2]);
+    }
+
+    /**
+     * SCALE + ROTATE MATRIX
+     *
+     * @param modelMatrix
+     * @param scaleFactor
+     * @param angle
+     * @param rotateFactor
+     */
+    public void scaleRotateModelMatrix(float[] modelMatrix, float[] scaleFactor, float angle, float[] rotateFactor) {
+        Matrix.scaleM(modelMatrix, 0, modelMatrix, 0, scaleFactor[0], scaleFactor[1], scaleFactor[2]);
+        Matrix.rotateM(this.modelMatrix, 0, modelMatrix, 0, angle, rotateFactor[0], rotateFactor[1], rotateFactor[2]);
+    }
+
+    /**
+     * ROTATE + TRANSLATE
+     *
+     * @param modelMatrix
+     * @param angle
+     * @param rotateFactor
+     * @param translateFactor
+     */
+    public void rotateTranslateModelMatrix(float[] modelMatrix, float angle, float[] rotateFactor, float[] translateFactor) {
+        Matrix.rotateM(modelMatrix, 0, modelMatrix, 0, angle, rotateFactor[0], rotateFactor[1], rotateFactor[2]);
+        Matrix.translateM(this.modelMatrix, 0, modelMatrix, 0, translateFactor[0], translateFactor[1], translateFactor[2]);
+    }
+
+    /**
+     * SCALE + ROTATE + TRANSLATE
+     *
+     * @param modelMatrix
+     * @param scaleFactor
+     * @param angle
+     * @param rotateFactor
+     * @param translateFactor
+     */
+    public void scaleRotateTranslateModelMatrix(float[] modelMatrix, float[] scaleFactor, float angle, float[] rotateFactor, float[] translateFactor) {
+        Matrix.scaleM(modelMatrix, 0, modelMatrix, 0, scaleFactor[0], scaleFactor[1], scaleFactor[2]);
+        Matrix.rotateM(modelMatrix, 0, modelMatrix, 0, angle, rotateFactor[0], rotateFactor[1], rotateFactor[2]);
+        Matrix.translateM(this.modelMatrix, 0, modelMatrix, 0, translateFactor[0], translateFactor[1], translateFactor[2]);
     }
 
     /**
