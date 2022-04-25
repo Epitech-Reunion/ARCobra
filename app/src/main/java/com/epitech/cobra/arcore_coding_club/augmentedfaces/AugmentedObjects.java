@@ -17,9 +17,9 @@ public class AugmentedObjects {
         CENTER
     }
     private static class SingleObj {
-        protected ObjectRenderer renderer = new ObjectRenderer();
-        protected float[] matrix = new float[16];
-        protected FACE_AREA area = FACE_AREA.CENTER;
+        protected ObjectRenderer renderer;
+        protected float[] matrix;
+        protected FACE_AREA area;
 
         public SingleObj(ObjectRenderer renderer, float[] matrix, FACE_AREA area) {
             this.renderer = renderer;
@@ -37,12 +37,12 @@ public class AugmentedObjects {
 
     HashMap<String, SingleObj> augmentedObjects = new HashMap<String, SingleObj>();
 
-    public void addObject(Context context, String objName, String materialName, FACE_AREA area) throws IOException {
+    public void addObject(Context context, String name, String objName, String materialName, FACE_AREA area) throws IOException {
         ObjectRenderer renderer = new ObjectRenderer();
         renderer.createOnGlThread(context, objName, materialName);
         renderer.setMaterialProperties(0.0f, 1.0f, 0.1f, 6.0f);
         renderer.setBlendMode(ObjectRenderer.BlendMode.AlphaBlending);
-        this.augmentedObjects.put(objName, new SingleObj(renderer, new float[16], area));
+        this.augmentedObjects.put(name, new SingleObj(renderer, new float[16], area));
     }
 
     public void updateObjectsMatrix(AugmentedFace face) {

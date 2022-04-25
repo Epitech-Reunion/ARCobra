@@ -179,6 +179,10 @@ public class AugmentedFacesActivity extends AppCompatActivity implements GLSurfa
         GLES20.glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         try {
             backgroundRenderer.createOnGlThread(this);
+
+            /**
+             *   BONUS : Changement du masque sur le visage
+             */
             augmentedFaceRenderer.createOnGlThread(this, "models/meshes/freckles.png");
             augmentedFaceRenderer.setMaterialProperties(0.0f, 1.0f, 0.1f, 6.0f);
 
@@ -188,18 +192,21 @@ public class AugmentedFacesActivity extends AppCompatActivity implements GLSurfa
 
             augmentedObjects.addObject(
                     this,
+                    "left_ear",
                     "models/objects/forehead_left.obj",
                     "models/materials/ear_fur.png",
                     AugmentedObjects.FACE_AREA.FOREHEAD_LEFT
             );
             augmentedObjects.addObject(
                     this,
+                    "right_ear",
                     "models/objects/forehead_right.obj",
                     "models/materials/ear_fur.png",
                     AugmentedObjects.FACE_AREA.FOREHEAD_RIGHT
             );
             augmentedObjects.addObject(
                     this,
+                    "nose",
                     "models/objects/nose.obj",
                     "models/materials/nose_fur.png",
                     AugmentedObjects.FACE_AREA.CENTER
@@ -256,19 +263,19 @@ public class AugmentedFacesActivity extends AppCompatActivity implements GLSurfa
                  */
 
                 augmentedObjects.updateObject(
-                        "models/objects/forehead_left.obj",
+                        "left_ear",
                         /* scale */ new float[]{1.0f, 1.0f, 1.0f},
                         /* rotate */ new float[]{/* angle= */ 0.0f, 1.0f, 0.0f, 0.0f},
                         /* translate */ new float[]{0.0f, 0.0f, 0.0f}
                 );
                 augmentedObjects.updateObject(
-                        "models/objects/forehead_right.obj",
+                        "right_ear",
                         null,
                         null,
                         null
                 );
                 augmentedObjects.updateObject(
-                        "models/objects/nose.obj",
+                        "nose",
                         null,
                         null,
                         null
