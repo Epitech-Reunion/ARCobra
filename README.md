@@ -21,7 +21,7 @@ N'hésitez pas à soliciter les *Cobras* présents pour toute autre aide durant 
 
 ## Introduction
 
-![arcore-20](ARCore.png "arcore"){width=20%}
+![arcore-20](ArCobra/img/ARCore.png "arcore"){width=20%}
 
 Vous êtes un développeur indépendant et vous souhaitez sortir votre propre filtre *Snapchat/Instagram* grâce au nouveau kit de développement de Google : **ARCore** !
 Vous allez donc être guidé à travers cette activité pour utiliser des *objets 3D* tout en trackant un visage à travers la caméra.
