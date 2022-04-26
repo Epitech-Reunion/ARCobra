@@ -56,23 +56,23 @@ public class AugmentedObjects {
         });
     }
 
-    public void updateObject(String objName, float[] scaleFactor, float[] rotateFactor, float[] translateFactor) {
+    public void updateObject(String name, float[] scaleFactor, float[] rotateFactor, float[] translateFactor) {
         if (scaleFactor == null)
             scaleFactor = new float[]{1.0f, 1.0f, 1.0f};
         if (rotateFactor == null)
             rotateFactor = new float[]{0.0f, 1.0f, 1.0f, 1.0f};
         if (translateFactor == null)
             translateFactor = new float[]{0.0f, 0.0f, 0.0f};
-        scaleRotateTranslateObject(objName, scaleFactor, rotateFactor[0], rotateFactor, translateFactor);
+        scaleRotateTranslateObject(name, scaleFactor, rotateFactor, translateFactor);
     }
 
-    public void scaleObject(String objName, float[] scaleFactor) { getObjectRenderer(objName).scaleModelMatrix(getObjectMatrix(objName), scaleFactor); }
-    public void rotateObject(String objName, float angle, float[] rotateFactor) { getObjectRenderer(objName).rotateModelMatrix(getObjectMatrix(objName), angle, rotateFactor); }
-    public void translateObject(String objName, float[] translateFactor) { getObjectRenderer(objName).translateModelMatrix(getObjectMatrix(objName), translateFactor); }
-    public void scaleRotateObject(String objName, float[] scaleFactor, float angle, float[] rotateFactor) { getObjectRenderer(objName).scaleRotateModelMatrix(getObjectMatrix(objName), scaleFactor, angle, rotateFactor); }
-    public void scaleTranslateObject(String objName, float[] scaleFactor, float[] translateFactor) { getObjectRenderer(objName).scaleTranslateModelMatrix(getObjectMatrix(objName), scaleFactor, translateFactor); }
-    public void rotateTranslateObject(String objName, float angle, float[] rotateFactor, float[] translateFactor) { getObjectRenderer(objName).rotateTranslateModelMatrix(getObjectMatrix(objName), angle, rotateFactor, translateFactor); }
-    public void scaleRotateTranslateObject(String objName, float[] scaleFactor, float angle, float[] rotateFactore, float[] translateFactor) { getObjectRenderer(objName).scaleRotateTranslateModelMatrix(getObjectMatrix(objName), scaleFactor, angle, rotateFactore, translateFactor); }
+    public void scaleObject(String name, float[] scaleFactor) { getObjectRenderer(name).scaleModelMatrix(getObjectMatrix(name), scaleFactor); }
+    public void rotateObject(String name, float[] rotateFactor) { getObjectRenderer(name).rotateModelMatrix(getObjectMatrix(name), rotateFactor[0], rotateFactor); }
+    public void translateObject(String name, float[] translateFactor) { getObjectRenderer(name).translateModelMatrix(getObjectMatrix(name), translateFactor); }
+    public void scaleRotateObject(String name, float[] scaleFactor, float[] rotateFactor) { getObjectRenderer(name).scaleRotateModelMatrix(getObjectMatrix(name), scaleFactor, rotateFactor[0], rotateFactor); }
+    public void scaleTranslateObject(String name, float[] scaleFactor, float[] translateFactor) { getObjectRenderer(name).scaleTranslateModelMatrix(getObjectMatrix(name), scaleFactor, translateFactor); }
+    public void rotateTranslateObject(String name, float[] rotateFactor, float[] translateFactor) { getObjectRenderer(name).rotateTranslateModelMatrix(getObjectMatrix(name), rotateFactor[0], rotateFactor, translateFactor); }
+    public void scaleRotateTranslateObject(String name, float[] scaleFactor, float[] rotateFactor, float[] translateFactor) { getObjectRenderer(name).scaleRotateTranslateModelMatrix(getObjectMatrix(name), scaleFactor, rotateFactor[0], rotateFactor, translateFactor); }
 
     public void drawObjects(float[] viewMatrix, float[] projectionMatrix, float[] colorCorrectionRgba, float[] color) {
         augmentedObjects.forEach((keys, value) -> {

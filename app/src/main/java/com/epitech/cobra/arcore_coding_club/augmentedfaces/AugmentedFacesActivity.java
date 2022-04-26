@@ -51,8 +51,6 @@ public class AugmentedFacesActivity extends AppCompatActivity implements GLSurfa
      *   STEP 1 : Créer un endroit où stocker les objets en réalité augmentée
      */
 
-    private final AugmentedObjects augmentedObjects = new AugmentedObjects();
-
     /**
      *
      */
@@ -183,39 +181,16 @@ public class AugmentedFacesActivity extends AppCompatActivity implements GLSurfa
             /**
              *   BONUS : Changement du masque sur le visage
              */
-            augmentedFaceRenderer.createOnGlThread(this, "models/meshes/freckles.png");
+            augmentedFaceRenderer.createOnGlThread(this, "models/meshes/empty.png");
             augmentedFaceRenderer.setMaterialProperties(0.0f, 1.0f, 0.1f, 6.0f);
 
             /**
              *   STEP 2 : Créer les objets en réalité augmenté en les ajoutant à l'espace de stockage créé à l'étape 1
              */
 
-            augmentedObjects.addObject(
-                    this,
-                    "left_ear",
-                    "models/objects/forehead_left.obj",
-                    "models/materials/ear_fur.png",
-                    AugmentedObjects.FACE_AREA.FOREHEAD_LEFT
-            );
-            augmentedObjects.addObject(
-                    this,
-                    "right_ear",
-                    "models/objects/forehead_right.obj",
-                    "models/materials/ear_fur.png",
-                    AugmentedObjects.FACE_AREA.FOREHEAD_RIGHT
-            );
-            augmentedObjects.addObject(
-                    this,
-                    "nose",
-                    "models/objects/nose.obj",
-                    "models/materials/nose_fur.png",
-                    AugmentedObjects.FACE_AREA.CENTER
-            );
-
             /**
              *
              */
-
 
         } catch (IOException e) {
             Log.e(TAG, "Failed to read an asset file", e);
@@ -256,36 +231,17 @@ public class AugmentedFacesActivity extends AppCompatActivity implements GLSurfa
                 float[] modelMatrix = new float[16];
                 face.getCenterPose().toMatrix(modelMatrix, 0);
                 augmentedFaceRenderer.draw(projectionMatrix, viewMatrix, modelMatrix, colorCorrectionRgba, face);
-                augmentedObjects.updateObjectsMatrix(face);
 
                 /**
-                 *   STEP 3 : Mettre à jour les objets à chaque instant pour qu'ils puissent bouger en fonction du visage détecté
+                 *   STEP 3 : Afficher les objets en temps réel
                  */
+                //augmentedObjects.updateObjectsMatrix(face);
 
-                augmentedObjects.updateObject(
-                        "left_ear",
-                        /* scale */ new float[]{1.0f, 1.0f, 1.0f},
-                        /* rotate */ new float[]{/* angle= */ 0.0f, 1.0f, 0.0f, 0.0f},
-                        /* translate */ new float[]{0.0f, 0.0f, 0.0f}
-                );
-                augmentedObjects.updateObject(
-                        "right_ear",
-                        null,
-                        null,
-                        null
-                );
-                augmentedObjects.updateObject(
-                        "nose",
-                        null,
-                        null,
-                        null
-                );
-
+                //augmentedObjects.drawObjects(viewMatrix, projectionMatrix, colorCorrectionRgba, DEFAULT_COLOR);
                 /**
                  *
                  */
 
-                augmentedObjects.drawObjects(viewMatrix, projectionMatrix, colorCorrectionRgba, DEFAULT_COLOR);
             }
         } catch (Throwable t) {
             Log.e(TAG, "Exception on the OpenGL thread", t);
