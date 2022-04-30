@@ -21,7 +21,7 @@ N'hésitez pas à soliciter les *Cobras* présents pour toute autre aide durant 
 
 ## Introduction
 
-![arcore-20](ARCore.png "arcore"){width=20%}
+![arcore-20](ARCobra/img/ARCore.png "arcore"){width=20%}
 
 Vous êtes un développeur indépendant et vous souhaitez sortir votre propre filtre *Snapchat/Instagram* grâce au nouveau kit de développement de Google : **ARCore** !
 Vous allez donc être guidé à travers cette activité pour utiliser des *objets 3D* tout en trackant un visage à travers la caméra.
@@ -66,7 +66,7 @@ Lancez l'émulation et glissez (*Drag & drop*) l'apk sur l'émulateur pour insta
 Bienvenue sur **Android Studio**, un environnement de travail pour tous les développeurs Android.
 Voici une petite description de l'interface :
 
-![android-studio](android-studio.png "interface"){width=100%}
+![android-studio](ARCobra/img/android-studio.png "interface"){width=100%}
 
 1. Ceci est ce qu'on appelle ***l'arborescence*** du projet, c'est là où se trouvent tous les fichiers utiles à la création de l'application Android
 
@@ -86,7 +86,7 @@ La compilation c'est la transformation d'un code lisible par un humain en une ap
 
 Si vous lancez l'émulateur sur Android Studio, faites en sorte de l'orienter en paysage comme ci-dessous.
 
-![emulator](emulator.png "emulator"){width=60%}
+![emulator](ARCobra/img/emulator.png "emulator"){width=60%}
 
 \newpage
 
@@ -305,7 +305,7 @@ Les **matrices** peuvent donc être **transformée** en suivant ***3 grandes cat
 - **Rotation** *(ou pivot)* : transformation de l'orientation de l'objet dans l'espace
 - **Translation** : transformation de la position de l'objet dans l'espace
 
-![transfo](matrix.png "matrix transformation"){width=50%}
+![transfo](ARCobra/img/matrix.png "matrix transformation"){width=50%}
 
 ::: info
 Ces transformations sont définies dans un espace 3D, donc avec des valeurs sur les 3 axes de l'espace : ```x```, ```y```, ```z```
