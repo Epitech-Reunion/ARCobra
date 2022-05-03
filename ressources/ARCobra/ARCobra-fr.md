@@ -40,10 +40,10 @@ Allez sur [https://github.com/google-ar/arcore-android-sdk/releases](https://git
 ```Google_Play_Services_for_AR_X.XX.X_x86_for_emulator.apk```.
 
 ## Projet ARCobra
-Allez sur [https://github.com/nicklamyeeman/ArCore-Cobra](https://github.com/nicklamyeeman/ArCore-Cobra), désarchivez le téléchargement et ouvrez le projet dans Android Studio.
+Allez sur [https://github.com/nicklamyeeman/ARCobra](https://github.com/nicklamyeeman/ARCobra), désarchivez le téléchargement et ouvrez le projet dans Android Studio.
 
 ::: note
-Modifiez le fichier ```Graddle Scripts > local.properties``` si Android Studio ne vous le propose pas pour relocaliser le SDK d'Android (```/home/[user_name]/Android/Adk```)
+Modifiez le fichier ```Graddle Scripts > local.properties``` si Android Studio ne vous le propose pas pour relocaliser le SDK d'Android (```/home/[user_name]/Android/Sdk```)
 :::
 
 ## Installer l'émulateur d'Android Studio
@@ -195,7 +195,7 @@ Voici donc les informations nécessaires pour créer vos objets :
 
 - nom de l'attribut : ```augmentedObjects``` *(dépendant de comment vous l'aviez appelé au tout début)*
 
-- nom de la méthode :   ```addObjects()```
+- nom de la méthode :   ```addObject()```
 
 - options :
     - ```context``` : *le contexte de l'application. Ici ce sera toujours ```this```*
@@ -205,8 +205,6 @@ Voici donc les informations nécessaires pour créer vos objets :
     - ```area``` : *l'endroit où placer l'objet sur le visage*
 
 ::: tip
-
-
 Vous manipulerez des objets et des textures déjà conçus pour l'activité.
 Dans l'arborescence de l'interface, vous trouverez les objets dans le dossier
 - ***assets > models > objects***
@@ -225,7 +223,7 @@ AugmentedObjects.FACE_AREA.FOREHEAD_LEFT
 AugmentedObjects.FACE_AREA.FOREHEAD_RIGHT
 
 /** Au centre **/
-AugmentedObjects.FACE_AREA.NOSE
+AugmentedObjects.FACE_AREA.CENTER
 ~~~
 :::
 
@@ -237,7 +235,7 @@ AugmentedObjects.FACE_AREA.NOSE
         "nez",
         "models/objects/nose.obj",
         "models/materials/nose_fur.png",
-        AugmentedObjects.FACE_AREA.NOSE
+        AugmentedObjects.FACE_AREA.CENTER
     );
 ~~~
 :::
@@ -403,7 +401,7 @@ augmentedObjects.updateObject(
 Maintenant que vous avez toutes les cartes en main, votre mission est d'afficher :
 
 - Une oreille gauche de renard (```forehead_left.obj``` + ```ear_fur.png```)
-- Une oreille droite (```forehead_rightt.obj``` + ```ear_fur.png```)
+- Une oreille droite (```forehead_right.obj``` + ```ear_fur.png```)
 - Un nez (```nose.obj``` + ```nose_fur.png```)
 
 Avec les valeurs par défaut.
@@ -415,8 +413,17 @@ Si vous souhaitez jouer avec les objets restants, essayer de faire :
 - CLUB : *en haut à droite*
 - EPITECH : *au centre*
 
+::: note
+Pour mettre les textes 3D dans le bon sens, manipulez les valeurs de scaling, rotate et translate à multiples reprises.
+Pour retourner un texte 3D par exemple(comme dans un mirroir), il suffit de scale en négatif sur l'axe y.
+:::
+
 ::: warning
 N'hésitez pas à tout essayer et de vous amuser avec les objets et les textures qui existent
+:::
+
+::: note
+Si lors de vos différentes expérimentation vos objets 3D ne s'affichent **plus**, essayez de re-***Build*** le projet en appuyant sur le petit marteau vert à côté du nom de l'appareil sur lequel vous testez (l'émulateur ou votre téléphone) 
 :::
 
 ::: info
