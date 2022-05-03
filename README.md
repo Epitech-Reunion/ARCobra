@@ -67,7 +67,7 @@ Be sure you have Android Studio installed on your PC, then open a terminal
 git clone https://github.com/nicklamyeeman/ARCobra.git
 ```
 2. Open it with Android Studio
-3. Follow the subject here : [subject](https://github.com/nicklamyeeman/ARCore/ressources/ARCobra/ARCobra.pdf)
+3. Follow the subject here : [subject](https://github.com/nicklamyeeman/ARCobra/blob/main/ressources/ARCobra/ARCobra.pdf)
 
 <!-- ROADMAP -->
 ## Roadmap
